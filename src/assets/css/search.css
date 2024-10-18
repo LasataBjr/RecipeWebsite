@@ -1,0 +1,21 @@
+#search{
+    width: 650px;
+    margin-top: 80px;
+    margin-left: 450px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 17px;
+    padding-left: 15px;
+   
+}
+#search:hover{
+    box-shadow: 3px 3px 3px rgb(153, 148, 148);
+}
+#btn1{
+    position: relative;
+    right: 3%;
+    border-style: none;
+    background-color: transparent;
+    font-size: medium;
+}
+
