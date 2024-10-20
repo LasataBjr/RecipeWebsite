@@ -1,7 +1,8 @@
 #search{
     width: 650px;
-    margin-top: 80px;
+    margin-top: 45px;
     margin-left: 450px;
+    margin-bottom: 10px;
     height: 40px;
     border-radius: 10px;
     font-size: 17px;
@@ -18,4 +19,43 @@
     background-color: transparent;
     font-size: medium;
 }
+
+#background_img{
+    width: 1000px;
+    height: 230px;
+    position: relative;
+    margin-left: 300px;
+    opacity: 0.7;
+  
+}
+#content{
+    max-height: 320px;
+    margin-top: -50px;
+    margin-bottom: -20px;
+}
+#slogan {
+    position: relative;
+    top: 150px;
+    left: 350px;
+    font-size: 39px;
+    font-weight: 700;
+    max-width: 600px;
+    font-family: Afacad Flux;
+    z-index: 2;
+    height: 25px;
+
+
+}
+#slogan1{
+    position: relative;
+    top: -120px;
+    left: 350px;
+    font-family: Afacad Flux;
+    font-size: 25px;
+    line-height: 0cm;
+    max-width: 600px;
+    z-index: 2;
+
+}
+
 

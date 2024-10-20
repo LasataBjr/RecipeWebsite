@@ -1,10 +1,8 @@
 #row{
-    
-    
-    max-width: 2000px;
-    height: 40%;
+    max-width: 3000px;
     margin-left: 40px;
     display: flex;
+    align-items: center;
     margin-bottom: 50px;
     
 }
@@ -12,17 +10,16 @@
     background-color: rgb(198, 194, 194);
     flex-direction: column;
     width: 300px;
-    margin-left: 85px;
+    margin-left: 120px;
     margin-right: 40px;
     box-shadow: 2px 2px 2px lightgrey;
     border-radius: 30px;
-    padding-bottom: -2px;
+    padding-bottom: 4px;
     
 }
 .latest{
-    width: 350px;
-    border-radius: 150px;
-    margin-left: 16px;
+    width: 300px;
+    margin-left: 1px;
     padding-bottom: 5px;
     padding-top: 20px;
     padding-right: 80px;
@@ -30,17 +27,15 @@
 
 }
 #tt1{
-    margin: 30px;
-    padding-left: 60px;
-    font-size: 30px;
+    margin-top: 50px;
+    padding-left: 150px;
+    font-size: 35px;
     font-weight: 700;
     
 }
 .l_title{
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 40px;
+    margin-top: 3px;
     font-size: 25px;
     font-weight: 600;
 }
@@ -50,16 +45,17 @@
     top: -10%;
     background-color: transparent;
     font-size: large;
-    padding: 4px;
-    border-radius: 15px;
+    margin-bottom: 20px;
+    border-radius: px;
     background-color: rgb(228, 173, 173);
     box-shadow: 2px 2px gray;
 }
 .btn3{
     position: relative;
     left: 50%;
-    top: -9%;
-    border-radius: 15px;
+    bottom:;
+    max-height: 30px;
+    max-width: 50px;
     background-color: rgb(228, 173, 173);
     box-shadow: 2px 2px gray;
     

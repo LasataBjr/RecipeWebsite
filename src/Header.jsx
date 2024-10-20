@@ -47,7 +47,7 @@ function Head(){
                     
                         <div className="col">
                             <a href='#' onClick={popupc}><img  className="list" src={chicken}></img>
-                            <p className="title" >chicken</p></a>
+                            <p className="title" >Chicken</p></a>
                         </div>
                         {
                             popc &&(

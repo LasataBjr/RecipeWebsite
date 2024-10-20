@@ -1,25 +1,23 @@
-*{
-	margin: 0px;
-	padding: 0px;
-	font-family: 'Aquilone',sans-serif;
-    box-sizing: border-box;
-}
+
 .list{
     width: 70px;
     border-radius: 70%;
     transition: transform 0.3s ease;
 }
+
 #container{
     display: flex;
     border-style: none; 
-    background-color: rgb(166, 159, 159);
+    background-color: lightgray;
     max-width: 800px;
     margin-left: 400px;
-    margin-top: 20px;
-    height: 130px;
+    margin-top: 60px;
+    height: 150px;
     border-radius: 20px;
     transition: transform 0.3s ease;
-    
+    box-shadow: 4px 4px 4px gray;
+    font-weight: 600;
+    position: scroll;
 }
 
 a{
@@ -30,20 +28,21 @@ a{
 a:hover .list {
     transform: scale(1.1);
     transition: transform 0.3s ;
-    box-shadow: 2px 2px 2px gray;
+    box-shadow: 3px 3px 3px gray;
 
   }
   
   a:hover .title {
     transform: scale(1.1); 
     transition: transform 0.3s ;
-    font-weight: 600;
+    font-size: 15px;
     text-shadow: 2px 2px 2px gray;
   }
   
 .col{
      flex-direction: column;
-     padding: 30px
+     padding: 30px;
+    
 }
  
 .title{

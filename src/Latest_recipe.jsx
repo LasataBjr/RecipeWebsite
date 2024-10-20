@@ -1,7 +1,7 @@
 import './assets/css/latest_recipe.css'
 import c_curry from './assets/images/chicken curry.png'
-import b_sekuwa from './assets/images/buff_sekuwa.jpg'
-import p_sekuwa from './assets/images/pork_sekuwa.jpg'
+import b_sekuwa from './assets/images/buff sekuwa.png'
+import p_sekuwa from './assets/images/Pork Bhutuwa.png'
 import  "./fontawesome-free-6.6.0-web/css/all.min.css"
 import arrow_up from './assets/images/arrow_up.png'
 function latest_review(){
@@ -30,6 +30,7 @@ function latest_review(){
                     <button className='btn3'><img className="arrow" src={arrow_up}></img></button>
                 </div>
             </div>
+            
         </>
     )
 }
