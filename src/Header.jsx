@@ -7,7 +7,6 @@ import veg from './assets/images/veg.png'
 import pork from './assets/images/pork.jpg'
 import './assets/css/header.css'
 import { useState} from 'react'
- 
 
 function Head(){
    
@@ -42,6 +41,7 @@ function Head(){
     
     return(
         <>
+            
             <header>
                 <div id='container'>
                     
