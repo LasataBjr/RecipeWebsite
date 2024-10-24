@@ -6,6 +6,7 @@ import './assets/css/index.css'
 import Login from './Login.jsx'
 import Signup from './signup.jsx'
 import RecipeInsertion from './Recipeadd.jsx'
+import RecipeDeletion from './Recipedel.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 
 function App() {
@@ -16,11 +17,13 @@ function App() {
                     <Link to='/Login'>Login</Link>
                     <Link to='/Signup'>Sign Up</Link>
                     <Link to ='/Recipeadd'>Add Recipe</Link>
+                    <Link to ='/Recipedel'>View</Link>
                 </nav>
                 <Routes>
                     <Route path='/Login' element={<Login/>}/>
                     <Route path='/Signup' element={<Signup/>}/>
                     <Route path='/Recipeadd' element ={<RecipeInsertion/>}/>
+                    <Route path='/Recipedel' element ={<RecipeDeletion/>}/>
                     <Route path='/' element={
                 <> 
                     <Head/>
