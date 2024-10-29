@@ -1,48 +1,65 @@
-import React, {useState} from 'react';
-import './assets/css/login.css'
-import axios from 'axios'
+import React, { useState } from 'react';
+import './assets/css/login.css';
+import axios from 'axios';
 
-function Login(){
+
+function Login({ onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const loginhandle = async() =>{
-    //     console.Log(username);
-    //     console.Log(password);
-    // }
-    const handleLogin = async (e) => {
-        e.preventDefault(); //Submission Logic handle like exception handling
-            try{
-                const response = await axios.post('http://localhost:5000/login',{
-                    username,
-                    password
-                });
+    const [errorMessage, setErrorMessage] = useState('')
+    const [loginSuccess, setLoginSuccess] = useState(false);
 
-                if(response.status === 200){
-                    alert("Login successful");
-                }else{
-                    alert("Login Failed!");
-                }                
-            }catch(error){
-                console.error(error);
-                alert("an error occured during login.");
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setErrorMessage('');
+
+        try {
+            const response = await axios.post('http://localhost:5000/login', {
+                username,
+                password,
+            });
+
+            if (response.status === 200) {
+                alert("Login successful");
+                localStorage.setItem('token', response.data.token);
+                setLoginSuccess(true);
+                onLogin();  // Call the onLogin function to update authentication state
+                setUsername('');
+                setPassword('');
+            } else {
+                setErrorMessage("Login failed. Please try agian");
             }
-    }
-    
-    return(
+        } catch (error) {
+            console.error(error);
+            setErrorMessage("An error occurred during login.");
+        }
+    };
+
+    return (
         <>
-        <h1>THis is login form</h1>
+            <h1>This is the login form</h1>
             <div id="loginform">
                 <form onSubmit={handleLogin}>
-                   
-                        <input type="text" placeholder='Username' id="uname" value={username} onChange={(e)=>setUsername(e.target.value)} required/>
-                        {/*onChange: This is a React event that triggers when the value in an input field changes.*/}
-                        <input type="password" placeholder="Password" id="pwd" value={password} onChange={(e)=>setPassword(e.target.value)} required/>
-                        <button >Login</button>
-
-                   
+                    <input
+                        type="text"
+                        placeholder='Username'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <button type='submit'>Login</button>
+                    {errorMessage && <p className='error-message'>{errorMessage}</p>}
                 </form>
             </div>
         </>
-    )
+    );
 }
-export default Login
+
+export default Login;

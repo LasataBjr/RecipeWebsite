@@ -1,10 +1,10 @@
 import Head from './Header.jsx'
 import Searchbar from './searchbar.jsx'
 import Latest_review from './Latest_recipe.jsx'
-import Popular from './popular_recipe.jsx'
+import PopularReview from './PopularReview.jsx'
 import './assets/css/index.css'
 import Login from './Login.jsx'
-import Signup from './signup.jsx'
+import Signup from './Signup.jsx'
 import RecipeInsertion from './Recipeadd.jsx'
 import RecipeDeletion from './Recipedel.jsx'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
@@ -25,15 +25,14 @@ function App() {
                     <Route path='/Recipeadd' element ={<RecipeInsertion/>}/>
                     <Route path='/Recipedel' element ={<RecipeDeletion/>}/>
                     <Route path='/' element={
-                <> 
-                    <Head/>
-                    <Searchbar/>
-                    <Latest_review/>
-                    <Popular/>
-                    
-                </>
-                    }
-                />
+                        <> 
+                            <Head/>
+                            <Searchbar/>
+                            <Latest_review/>
+                            <PopularReview/>
+                            
+                        </>
+                    }/>
                 </Routes>
             </Router>
             

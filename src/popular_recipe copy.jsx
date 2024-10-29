@@ -1,10 +1,11 @@
 import './assets/css/popular_recipe.css'
 import c_curry from './assets/images/chicken curry.png'
-import b_sekuwa from './assets/images/buff sekuwa.png'
 import p_sekuwa from './assets/images/Pork Bhutuwa.png'
+import b_sekuwa from './assets/images/buff sekuwa.png'
 import  "./fontawesome-free-6.6.0-web/css/all.min.css"
 import arrow_up from './assets/images/arrow_up.png'
 import { useState} from 'react'
+
 function popular_review(){
 
     const [count, setCount] = useState(0);

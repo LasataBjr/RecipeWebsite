@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import { useAsyncError } from 'react-router-dom';
 
 function fetch_Recipe(){
     const [recipes, setRecipes] = useState([]);
     const [category, setCategory] = useState('Veg');
+    const [sortBy,  setSortBy] = useState('default');
 
     //function for fetching
     const fetch_recipe = async() =>{
@@ -27,14 +29,27 @@ function fetch_Recipe(){
             console.error('error deleting recipe:',error);
             alert("Cannot delete",error);
         }
+    };
+    const likerecipe = async(id) =>{
+        try{
+            const response = await axios.post(`http://localhost:5000/likes/${id}?category=${category}`);
+            alert(response.data.message);
+            fetch_recipe();
+        }
+        catch(error)
+        {
+            console.error('error liking recipe:',error);
+            alert("Cannot like recipe",error);
+        }
     }
+
     useEffect(() =>{
         fetch_recipe();    
-    },[category]);
+    },[category, sortBy]);
 
 return(
     <>
-        <h2>Recipes in {category} Category</h2>
+        <h2>Top {sortBy === 'popular' ? '3 popular' : ''}Recipes in {category} Category</h2>
         <label>Choose Category:</label>
         <select value={category} onChange = {(e) => setCategory(e.target.value)}>
             <option value="Chicken">Chicken</option>
@@ -44,6 +59,13 @@ return(
             <option value="Fish">Fish</option>
             <option value="Bakery">Bakery</option>
         </select>
+
+        <label>Sort By:</label>
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option value="default">Default</option>
+            <option value="popular">Popular</option>
+        </select>
+
         <ul>
             {recipes.map((recipe) => (
                 <li key={recipe._id}>
@@ -51,7 +73,9 @@ return(
                     {recipe.image && <img src={recipe.image} alt={recipe.title} width="100"/>}
                     <p><strong>Ingredients: </strong>{recipe.ingredients.join(', ')}</p>
                     <p><strong>Steps: </strong>{recipe.steps.join(', ')}</p>
+                    <p><strong>Likes: </strong></p>
                     <button onClick = { () => afterdel_recipe(recipe._id)}>Delete</button>
+                    <button onClick = { () => likerecipe(recipe._id)}>Like</button>
                 </li>
             ))}
         </ul>
