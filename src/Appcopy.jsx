@@ -52,6 +52,7 @@ function App() {
                     path='/' 
                     element={isAuthenticated ? <Home /> : <Navigate to="/Login" />} 
                 />
+                
             </Routes>
         </Router>
     );
