@@ -5,6 +5,7 @@ import Signup from './Signup.jsx';
 import Home from './Home.jsx';
 import RecipeInsertion from './Recipeadd.jsx';
 import RecipeDeletion from './Recipedel.jsx';
+import RecipePage from './RecipePage.jsx';
 import './assets/css/index.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                     <>
                         <Link to='/Recipeadd'>Add Recipe</Link>
                         <Link to='/Recipedel'>View Recipes</Link>
+                        <Link to='/'>Home</Link> 
                         <button onClick={handleLogout}>Logout</button>
                     </>
                 )}
@@ -48,10 +50,14 @@ function App() {
                     path='/Recipedel' 
                     element={isAuthenticated ? <RecipeDeletion /> : <Navigate to="/Login" />} 
                 />
+                <Route path='recipePage/:id'
+                    element={isAuthenticated ? <RecipePage /> : <Navigate to='/recipePage/:id'/>}
+                />
                 <Route 
                     path='/' 
                     element={isAuthenticated ? <Home /> : <Navigate to="/Login" />} 
                 />
+                
                 
             </Routes>
         </Router>

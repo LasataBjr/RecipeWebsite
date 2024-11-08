@@ -10,7 +10,7 @@ function SearchBar() {
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSearch = async () => {
         if (!searchQuery.trim()) return;
@@ -39,31 +39,39 @@ function SearchBar() {
         };
     }, [searchQuery]);
 
+    const handleResultClick = (recipeId) => {
+        console.log("Navigating to recipe page with ID: ", recipeId);
+        navigate(`/recipePage/${recipeId}`);
+    };
+
     return (
         <>
-            {/* <div id="content">
-                <p id="slogan">I would like to cook</p>
-                <img id="background_img" src={bck} alt="Background" />
-                <p id="slogan1">"Where Great Taste Begins at Home"</p>
-            </div> */}
             <div id="input-wrapper">
                 <div id="search_bar">
                     <button id="btn1" onClick={handleSearch} disabled={!searchQuery}>
                         <i className="fa fa-search" id="search_icon" aria-hidden="true"></i>
                     </button>
-                    <input id="search" type="text" placeholder="Search" name="SearchBar" onChange={(e) => setSearchQuery(e.target.value)} aria-label="Search recipes"/>
+                    <input
+                        id="search"
+                        type="text"
+                        placeholder="Search"
+                        name="SearchBar"
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        aria-label="Search recipes"
+                    />
                 </div>
                 <div id="SearchBox">
                     {loading && <p>Loading...</p>}
                     {error && <p className="error">{error}</p>}
                     {searchResults.length > 0 ? (
                         searchResults.map((recipe) => (
-                            <div id="search_result" key={recipe._id}>
-                                
+                            <div
+                                id="search_result"
+                                key={recipe._id}
+                                onClick={() => handleResultClick(recipe._id)}
+                                style={{ cursor: 'pointer' }} 
+                            >
                                 <h3>{recipe.title}</h3>
-                                {/* <img src={recipe.image} id="searched_img" alt={recipe.title} />
-                                <p><strong>Category: </strong> {recipe.category}</p>
-                                <p><strong>Ingredients: </strong> {recipe.ingredients.join(", ")}</p> */}
                             </div>
                         ))
                     ) : (
