@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { useAsyncError } from 'react-router-dom';
+import { useAsyncError, useNavigate } from 'react-router-dom';
 
-function fetch_Recipe(){
+function Recipedel(){
     const [recipes, setRecipes] = useState([]);
     const [category, setCategory] = useState('Veg');
     const [sortBy,  setSortBy] = useState('default');
+    const navigate = useNavigate();
 
     //function for fetching
     const fetch_recipe = async() =>{
@@ -74,12 +75,15 @@ return(
                     <p><strong>Ingredients: </strong>{recipe.ingredients.join(', ')}</p>
                     <p><strong>Steps: </strong>{recipe.steps.join(', ')}</p>
                     <p><strong>Likes: </strong></p>
+
+                    
                     <button onClick = { () => afterdel_recipe(recipe._id)}>Delete</button>
                     <button onClick = { () => likerecipe(recipe._id)}>Like</button>
+                    <button onClick = { () => navigate(`/Recipeedit/${recipe._id}`)}>Edit</button>
                 </li>
             ))}
         </ul>
     </>
 );
 }
-export default fetch_Recipe
+export default Recipedel

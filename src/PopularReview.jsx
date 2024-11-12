@@ -21,37 +21,47 @@ function PopularReview() {
         fetchPopularRecipes();
     }, []);
 
-    // const handleLike = async (id, category) => {
-    //     const isLiked = likedRecipes.has(id);
-    //     const newLikedRecipes = new Set(likedRecipes);
+    const handleLike = async (id, category) => {
+        const newLikedRecipes = new Set(likedRecipes);
+    
+        try {
+            const token = localStorage.getItem('token');
+    
+            if (!token) {
+                alert("You need to log in to like a recipe.");
+                return;
+            }
+    
+            const response = await axios.post(
+                `http://localhost:5000/toggle_like/${id}`,
+                { category },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+    
+            if (response.status === 200) {
+                const updatedLikes = response.data.likes;
+                const likedStatus = response.data.liked;
+    
+                if (likedStatus) {
+                    newLikedRecipes.add(id);
+                } else {
+                    newLikedRecipes.delete(id);
+                }
+    
+                setLikedRecipes(newLikedRecipes);
+    
+                setRecipes((prevRecipes) =>
+                    prevRecipes.map((recipe) =>
+                        recipe._id === id ? { ...recipe, likes: updatedLikes } : recipe
+                    )
+                );
+            }
+        } catch (error) {
+            console.error('Error liking recipe:', error);
+        }
+    };
+    
         
-    //     try {
-    //         const response = await axios.post(`http://localhost:5000/toggle_like/${id}`, {
-    //             category
-    //         });
-    
-    //         if (response.status === 200) {
-    //             const updatedLikes = response.data.likes;
-    //             const likedStatus = response.data.liked;
-    
-    //             // Update the likedRecipes set based on the API response
-    //             if (likedStatus) {
-    //                 newLikedRecipes.add(id);
-    //             } else {
-    //                 newLikedRecipes.delete(id);
-    //             }
-    //             setLikedRecipes(newLikedRecipes);
-    //             setRecipes((prevRecipes) =>
-    //                 prevRecipes.map((recipe) =>
-    //                     recipe._id === id ? { ...recipe, likes: updatedLikes } : recipe
-    //                 )
-    //             );
-    //         }
-    //     } catch (error) {
-    //         console.error('Error liking recipe:', error);
-    //     }
-    // };
-    
     
     return (
         <>
@@ -63,8 +73,12 @@ function PopularReview() {
                         <div className="column" key={recipe._id}>
                             <img className="latest" src={recipe.image || arrow_up} alt={recipe.title} />
                             <p className="l_title">{recipe.title}</p>
-                            {/* <button className={`btn2 ${likedRecipes.has(recipe._id) ? 'liked' : ''}`} aaaaaaaonClick={() => handleLike(recipe._id, recipe.category)}><i className="fa fa-heart"></i> */}
-                            {/* </button> */}
+                            <button
+                                className={`btn2 ${likedRecipes.has(recipe._id) ? 'liked': ''}`}
+                                onClick={() =>  handleLike(recipe._id, recipe.category)}
+                            >
+                                <i className='fa fa-heart'></i>
+                            </button>
 
                             <p>Likes: {recipe.likes}</p>
                         </div>
@@ -75,6 +89,6 @@ function PopularReview() {
             </div>
         </>
     );
-}
 
+}
 export default PopularReview;
