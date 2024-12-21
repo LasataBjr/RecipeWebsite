@@ -105,21 +105,21 @@ return(
                             {recipe.likes}
                         </p>
 
-                        <button
+                        {/* <button
                             className="bttn"
                             onClick={() => afterdel_recipe(recipe._id)}
                         >
                             Delete
-                        </button>
+                        </button> */}
                         <button className="bttn" onClick={() => likerecipe(recipe._id)}>
                             Like
                         </button>
-                        <button
+                        {/* <button
                             className="bttn"
                             onClick={() => navigate(`/Recipeedit/${recipe._id}`)}
                         >
                             Edit
-                        </button>
+                        </button> */}
                     </div>
                 ))}
             </div>
