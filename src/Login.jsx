@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import login_logo from './assets/images/Logo.png'
 import './assets/css/login.css';
+import  "./fontawesome-free-6.6.0-web/css/all.min.css"
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -27,7 +30,7 @@ function Login({ onLogin }) {
                 setUsername('');
                 setPassword('');
             } else {
-                setErrorMessage("Login failed. Please try agian");
+                setErrorMessage("Login failed. Please try againn");
             }
         } catch (error) {
             console.error(error);
@@ -37,25 +40,44 @@ function Login({ onLogin }) {
 
     return (
         <>
-            <h1>This is the login form</h1>
-            <div id="loginform">
-                <form onSubmit={handleLogin}>
-                    <input
+           
+            <div id="login_form">
+
+                <form action = "" onSubmit={handleLogin}>
+                    <img src={login_logo} id="login_logo"></img>
+                    <div className = "input-box">
+                        <input
                         type="text"
                         placeholder='Username'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
-                    <input
+                        required 
+                        />
+                        <i className="fa fa-user form_icons"></i>
+                        
+                    </div>
+                    <div className = "input-box">
+                        <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                    />
-                    <button type='submit'>Login</button>
+                        />
+                        <i className="fa fa-lock"></i>
+                        
+                    </div>
                     {errorMessage && <p className='error-message'>{errorMessage}</p>}
+                    <button type='submit'>Login</button>
+                    <div className="register-link">
+                        <p>Don't have an account?
+                        {/* <a href="#"> SignUp </a> */}
+                        <Link to="/Signup"> SignUp </Link>
+                        </p>
+                        
+                        
+                    </div>
+                   
                 </form>
             </div>
         </>

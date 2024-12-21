@@ -1,5 +1,61 @@
-#nav{
-    height: 20px;
-    width: 100%;
-    background-color: white;
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff; 
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    position: sticky;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navlogo {
+    width: 80px; /* Adjust logo size */
+    height: auto;
+    padding-left: 30px;
+}
+
+#navbar {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+#navbar li {
+    margin: 0 20px;
+    
+}
+
+#navbar li a, #navbar li button {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#navbar li a:hover, #navbar li a.active,
+#navbar li button:hover {
+    color: #f3c682;
+    transition: color 0.3s ease;
+}
+
+#navbar li a.active::after, 
+#navbar li a:hover::after 
+{
+    content: '';
+    display: block;
+    width: 50%;
+    height: 2px;
+    background: #f3c682;
+    margin: 1px auto 0;
+    
 }

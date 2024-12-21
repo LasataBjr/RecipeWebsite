@@ -1,0 +1,50 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+     /* Ensure it's always at the bottom */
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.footer-description {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #ddd;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ff5722; /* Highlight color for hover */
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #aaa;
+}
+a{
+    text-decoration: none;
+}

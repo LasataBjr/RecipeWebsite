@@ -1,0 +1,185 @@
+.recipe-page {
+    max-width: 800px;
+    margin:50px auto;
+    padding: 20px;
+    background: rgb(235, 233, 233);
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.recipe-image {
+    display: block;
+    width: 350px;
+    max-height: 300px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+   
+}
+
+/* Toggle Button Container */
+.toggle-switch-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 180px;
+    height: 60px;
+    background-color: #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-switch.active {
+    background-color: #ffbd59;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 9px;
+    left: 
+    8px;
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 30px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.toggle-switch.active .toggle-slider {
+    transform: translateX(105px);
+}
+
+.toggle-label {
+    font-size: 16px;
+    font-weight: bold;    
+    z-index: 2;
+    pointer-events: none;
+
+}
+
+.toggle-left {
+    color: #000;
+}
+
+.toggle-right {
+    color: #000;
+}
+
+.active .toggle-left {
+    color: #000;
+}
+
+.active .toggle-right {
+    color: #000;
+}
+
+/* Ingredients and Steps List */
+.recipe-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ingredients-section h2,
+.steps-section h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.ingredients-section ul,
+.steps-section ul {
+    margin: 0;
+    padding-left: 20px;
+    
+}
+
+
+.ingredients-section li,
+.steps-section li {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 8px;
+    color: #555;
+    margin: 5px 0;
+    font-size: 14px;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ingredients-section li:hover,
+.steps-section li:hover {
+    transform: scale(1.0);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 576px) {
+    .recipe-page {
+        padding: 10px;
+    }
+
+    .recipe-title {
+        font-size: 1.6rem;
+    }
+
+    .recipe-image {
+        max-height: 250px;
+    }
+
+    .toggle-switch-container {
+        width: 120px;
+        height: 30px;
+    }
+
+    .toggle-switch {
+        width: 50px;
+        height: 20px;
+    }
+
+    .toggle-switch-container.active .toggle-switch {
+        transform: translateX(60px);
+    }
+
+    .toggle-label {
+        font-size: 0.8rem;
+    }
+
+    .recipe-content {
+        padding: 15px;
+    }
+
+    .ingredients-section h2,
+    .steps-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .ingredients-section li,
+    .steps-section li {
+        font-size: 0.9rem;
+    }
+}

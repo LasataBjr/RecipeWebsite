@@ -16,19 +16,19 @@ const RecipeEdit = () => {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');  // Check if token exists in localStorage
+    const token = localStorage.getItem('token');  // Check if token exists in localStorage
 
-    if (!token) {
-      alert('You need to be logged in to edit this recipe');
-      navigate('/Login');  // Redirect to login if token is not found
+    if(!token){
+      alert('you need to be logged in to edit this recipe');
+      navigate('/Login');
       return;
     }
 
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/recipeedit/${id}`, {
+        const response = await axios.get(`http://localhost:5000/recipe/${id}`, {
           headers: {
-            Authorization: `Bearer ${token}`,  // Include token in the request header
+            Authorization: `Bearer ${token}`,
           },
         });
         setRecipe(response.data);
@@ -39,11 +39,13 @@ const RecipeEdit = () => {
           image: response.data.image || null,
         });
       } catch (error) {
-        console.error('Error fetching recipe:', error);
+        console.error('Error fetching recipe:', error.response ? error.response.data : error.message);
         alert('Error fetching recipe');
-        navigate('/Login');  // Redirect if there’s an error fetching the recipe
+        navigate('/Login');
+        
       }
     };
+    
 
     fetchRecipe();
   }, [id, navigate]);
@@ -63,36 +65,50 @@ const RecipeEdit = () => {
     }));
   };
 
-  const handleSave = async () => {
-    const data = new FormData();
-    data.append('title', formData.title);
-    data.append('ingredients', formData.ingredients.split(', '));
-    data.append('steps', formData.steps.split(', '));
-    if (formData.image) {
-      data.append('image', formData.image);
-    }
-
-    const token = localStorage.getItem('authToken');  // Ensure you retrieve the token before sending the request
-
-    if (!token) {
-      alert('You need to be logged in to edit this recipe');
-      navigate('/Login');
-      return;
-    }
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
     try {
-      await axios.put(`http://localhost:5000/recipeedit/${id}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,  // Include token in the request headers
-        },
-      });
-      alert('Recipe updated successfully');
-      navigate('/recipes');
+      const formDataToSubmit = new FormData();
+      formDataToSubmit.append('title', formData.title);
+      formDataToSubmit.append(
+        'ingredients',
+        formData.ingredients.split(',').map((ing) => ing.trim())
+      );
+      formDataToSubmit.append(
+        'steps',
+        formData.steps.split(',').map((step) => step.trim())
+      );
+  
+      if (formData.image) {
+        formDataToSubmit.append('image', formData.image);
+      }
+  
+      const token = localStorage.getItem('token');
+  
+      const response = await axios.put(
+        `http://localhost:5000/recipe/${id}`,
+        formDataToSubmit,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+  
+      alert(response.data.message);
+      navigate('/home');
     } catch (error) {
-      console.error('Error updating recipe:', error);
+      console.error(
+        'Error updating recipe:',
+        error.response ? error.response.data : error.message
+      );
       alert('Error updating recipe');
     }
   };
+  
+  
 
   if (!recipe) {
     return <div>Loading...</div>;
@@ -101,7 +117,7 @@ const RecipeEdit = () => {
   return (
     <div>
       <h1>Edit Recipe</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Title:</label>
           <input
@@ -137,7 +153,7 @@ const RecipeEdit = () => {
             onChange={handleImageChange}
           />
         </div>
-        <button type="button" onClick={handleSave}>Save Changes</button>
+        <button type="button" onClick={handleSubmit}>Save Changes</button>
       </form>
     </div>
   );

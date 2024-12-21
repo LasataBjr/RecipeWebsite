@@ -1,0 +1,119 @@
+/* General form styling */
+#addrecipe_form {
+    max-width: 700px;
+    margin: 50px auto;
+    padding-left: 90px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: rgb(248, 244, 244);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+   
+}
+
+/* Labels and inputs */
+#addrecipe_form .label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+    padding-bottom: 0 10px;
+}
+#addrecipe_form #category{
+    width: 30%;
+    margin: 10px 0;
+    padding: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: rgb(242, 239, 239);
+}
+#addrecipe_form .addinput
+
+{
+    width: 85%;
+    padding: 8px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: rgb(242, 239, 239);
+}
+#addrecipe_form input:focus {
+    outline: none;
+    border: 2px solid #f1cf9b;
+   
+    box-shadow: 0 0 5px rgba(225, 225, 225, 0.5);
+}
+
+/* Textarea specific styling */
+#addrecipe_form textarea {
+    resize: vertical;
+}
+#addrecipe_form textarea:focus{
+    outline: none;
+    border: 2px solid #f1cf9b;
+    box-shadow: 0 0 5px rgba(225, 225, 225, 0.5);
+}
+ h2{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+/* Buttons styling */
+#addrecipe_form .addbtn {
+    background-color: #f3c682;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 160px;
+}
+#addrecipe_form .submit{
+    margin-left: 35%;
+}
+
+#addrecipe_form button:hover {
+    background-color: #ffbd59;
+}
+
+/* Ingredients and steps list styling */
+#addrecipe_form ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+#addrecipe_form ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Form section spacing */
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #addrecipe_form {
+        padding: 15px;
+    }
+
+    #addrecipe_form label {
+        font-size: 14px;
+    }
+
+    #addrecipe_form button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}

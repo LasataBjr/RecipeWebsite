@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useAsyncError, useNavigate } from 'react-router-dom';
-
+import './assets/css/viewrecipe.css'
 function Recipedel(){
     const [recipes, setRecipes] = useState([]);
     const [category, setCategory] = useState('Veg');
@@ -50,9 +50,10 @@ function Recipedel(){
 
 return(
     <>
-        <h2>Top {sortBy === 'popular' ? '3 popular' : ''}Recipes in {category} Category</h2>
-        <label>Choose Category:</label>
-        <select value={category} onChange = {(e) => setCategory(e.target.value)}>
+        <h2 id="cat">Top {sortBy === 'popular' ? '3 popular' : ''}Recipes in {category} Category</h2>
+
+        <label className="lab">Choose Category:</label>
+        <select className="option" value={category} onChange = {(e) => setCategory(e.target.value)}>
             <option value="Chicken">Chicken</option>
             <option value="Buff">Buff</option>
             <option value="Pork">Pork</option>
@@ -61,29 +62,69 @@ return(
             <option value="Bakery">Bakery</option>
         </select>
 
-        <label>Sort By:</label>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+        <label className="lab">Sort By:</label>
+        <select className="option" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
             <option value="default">Default</option>
             <option value="popular">Popular</option>
         </select>
 
-        <ul>
-            {recipes.map((recipe) => (
-                <li key={recipe._id}>
-                    <h3>{recipe.title}</h3>
-                    {recipe.image && <img src={recipe.image} alt={recipe.title} width="100"/>}
-                    <p><strong>Ingredients: </strong>{recipe.ingredients.join(', ')}</p>
-                    <p><strong>Steps: </strong>{recipe.steps.join(', ')}</p>
-                    <p><strong>Likes: </strong></p>
+        <div className="recipes-container">
+                {recipes.map((recipe) => (
+                    <div className="recipe-box" key={recipe._id}>
+                        <h3>{recipe.title}</h3>
+                        {recipe.image && (
+                            <img
+                                id="recipe_img"
+                                src={recipe.image}
+                                alt={recipe.title}
+                                width="100"
+                            />
+                        )}
+                        <p className="topic">
+                            <strong>Ingredients: </strong>
+                        </p>
+                        <ul className="points">
+                            {recipe.ingredients.map((ingredient, index) => (
+                                <li className="li" key={index}>
+                                    {ingredient}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="topic">
+                            <strong>Steps: </strong>
+                        </p>
+                        <ul className="points">
+                            {recipe.steps.map((step, index) => (
+                                <li className="li" key={index}>
+                                    {step}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="topic">
+                            <strong>Likes: </strong>
+                            {recipe.likes}
+                        </p>
 
-                    
-                    <button onClick = { () => afterdel_recipe(recipe._id)}>Delete</button>
-                    <button onClick = { () => likerecipe(recipe._id)}>Like</button>
-                    <button onClick = { () => navigate(`/Recipeedit/${recipe._id}`)}>Edit</button>
-                </li>
-            ))}
-        </ul>
-    </>
-);
+                        <button
+                            className="bttn"
+                            onClick={() => afterdel_recipe(recipe._id)}
+                        >
+                            Delete
+                        </button>
+                        <button className="bttn" onClick={() => likerecipe(recipe._id)}>
+                            Like
+                        </button>
+                        <button
+                            className="bttn"
+                            onClick={() => navigate(`/Recipeedit/${recipe._id}`)}
+                        >
+                            Edit
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </>
+    );
 }
-export default Recipedel
+
+export default Recipedel;

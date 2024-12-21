@@ -28,7 +28,7 @@ function SearchBar() {
             setLoading(false);
         }
     };
-
+    
     useEffect(() => {
         const handler = setTimeout(() => {
             handleSearch();

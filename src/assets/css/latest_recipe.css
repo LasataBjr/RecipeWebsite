@@ -1,65 +1,120 @@
-#row{
-    max-width: 3000px;
-    margin-left: 40px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
-    
-}
-.column{
-    background-color: rgb(198, 194, 194);
-    flex-direction: column;
-    width: 300px;
-    margin-left: 120px;
-    margin-right: 40px;
-    box-shadow: 2px 2px 2px lightgrey;
-    border-radius: 30px;
-    padding-bottom: 4px;
-    
-}
-.latest{
-    width: 300px;
-    margin-left: 1px;
-    padding-bottom: 5px;
-    padding-top: 20px;
-    padding-right: 80px;
-
-
-}
 #tt1{
-    margin-top: 50px;
-    padding-left: 150px;
-    font-size: 35px;
-    font-weight: 700;
     
+    font-size: 2.5rem;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 15px;
 }
-.l_title{
-    text-align: center;
-    margin-top: 3px;
-    font-size: 25px;
-    font-weight: 600;
+
+/* Recipe Container Styling */
+#col {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 90px;
+    margin: 20px auto;
+   
 }
-.btn2{
-    position: relative;
-    left: 30%;
-    top: -10%;
+
+.row {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.latest_img {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin-bottom: 15px; 
+    background-color: #f7f7f7; /* Optional: Placeholder background color */
+    display: block;
+    box-shadow: 4px 4px 4px gray;
+}
+
+.l_title {
+    
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #444;
+        text-align: center;
+        margin: 10px 0;
+        width: 200px;
+        
+            
+}
+
+/* Info and Action Section */
+.row .info {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 5px 0;
+}
+
+.row .action-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.row .action-buttons button {
+    flex: 1;
+    background-color: #f1cf9b; /* Green Button */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.row .action-buttons button i {
+    margin-right: 5px;
+    font-size: 1.1rem;
+}
+
+.row .action-buttons button:hover {
+    background-color:#ca9c56;
+}
+
+button.like-button {
     background-color: transparent;
-    font-size: large;
-    margin-bottom: 20px;
-    border-radius: px;
-    background-color: rgb(228, 173, 173);
-    box-shadow: 2px 2px gray;
+    color: #ff6b6b;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    width: 30%;
 }
-.btn3{
-    position: relative;
-    left: 50%;
-    
-    max-height: 30px;
-    max-width: 50px;
-    background-color: rgb(228, 173, 173);
-    box-shadow: 2px 2px gray;
-    
+
+button.like-button:hover {
+    color: #ff3d3d;
 }
-.arrow{
-    width: 27px;
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #col {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .row {
+        width: 50%;
+    }
 }
